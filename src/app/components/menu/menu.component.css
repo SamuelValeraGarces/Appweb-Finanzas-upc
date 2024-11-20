@@ -1,0 +1,61 @@
+/* menu.component.css */
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background: linear-gradient(to right, #2c3e50, #34495e); /* Degradado sutil de azul oscuro */
+  color: white;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+  color: #ecf0f1; /* Blanco suave para un contraste profesional */
+}
+
+button {
+  background-color: #2980b9; /* Azul sólido y confiable */
+  color: white;
+  border: none;
+  padding: 15px 30px; /* Aumenta el tamaño del botón */
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 1.3rem; /* Aumenta el tamaño de la fuente */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 200px; /* Establece un ancho fijo para los botones */
+}
+
+button:hover {
+  background-color: #1f6f94; /* Azul ligeramente más oscuro para el hover */
+  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  background-color: #1a4f71; /* Azul más oscuro al hacer clic */
+  transform: translateY(0); /* Restablecer el movimiento al hacer clic */
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+  }
+
+  button {
+    font-size: 1.2rem; /* Aumenta el tamaño de los botones en pantallas pequeñas */
+    padding: 12px 25px; /* Ajusta el padding para que no se vean demasiado grandes */
+    width: 180px; /* Mantiene el mismo ancho para los botones en pantallas pequeñas */
+  }
+}

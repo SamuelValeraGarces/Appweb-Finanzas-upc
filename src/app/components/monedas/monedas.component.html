@@ -1,0 +1,49 @@
+<!-- monedas.component.html -->
+<div class="monedas-container">
+    <h1>Monedas</h1>
+    <!-- Botón para retroceder -->
+    <button (click)="retroceder()">Volver</button>
+    <!-- Formulario para registrar una nueva moneda -->
+    <div *ngIf="!monedaEditar">
+      <h2>Registrar nueva moneda</h2>
+      <form (ngSubmit)="registrarMoneda()">
+        <input type="text" [(ngModel)]="nuevaMoneda.nombre_moneda" name="nombre_moneda" placeholder="Nombre de la moneda" required>
+        <input type="text" [(ngModel)]="nuevaMoneda.simbolo" name="simbolo" placeholder="Símbolo" required>
+        <button type="submit">Registrar</button>
+      </form>
+    </div>
+  
+    <!-- Formulario para editar una moneda -->
+    <div *ngIf="monedaEditar">
+      <h2>Editar moneda</h2>
+      <form (ngSubmit)="actualizarMoneda()">
+        <input type="text" [(ngModel)]="monedaEditar.nombre_moneda" name="nombre_moneda" placeholder="Nombre de la moneda" required>
+        <input type="text" [(ngModel)]="monedaEditar.simbolo" name="simbolo" placeholder="Símbolo" required>
+        <button type="submit">Actualizar</button>
+        <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+      </form>
+    </div>
+  
+    <!-- Tabla de monedas -->
+    <h2>Listado de monedas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Símbolo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let moneda of monedas">
+          <td>{{ moneda.nombre_moneda }}</td>
+          <td>{{ moneda.simbolo }}</td>
+          <td>
+            <button (click)="editarMoneda(moneda)">Editar</button>
+            <button (click)="eliminarMoneda(moneda.id_moneda)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,111 @@
+/* Estilo global para el contenedor del formulario */
+form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+/* Títulos */
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #2c3e50; /* Color oscuro para un toque profesional */
+    margin-bottom: 25px;
+}
+
+/* Estilo para los grupos de formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Estilo para las etiquetas */
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #34495e; /* Un gris oscuro que da un aspecto serio */
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Estilo común para inputs y botones */
+input, button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f4f4f4; /* Un gris suave */
+    margin-bottom: 15px;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Ajustes específicos para los inputs */
+input {
+    background-color: #f4f4f4;
+}
+
+input:focus {
+    border-color: #3498db; /* Azul claro para un enfoque suave */
+    outline: none;
+    background-color: #ecf3f9; /* Un fondo más claro cuando está enfocado */
+}
+
+/* Estilo para los botones */
+button {
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo para el botón de iniciar sesión */
+.submit-btn {
+    background-color: #3498db; /* Azul profesional y confiable */
+    color: white;
+    font-weight: bold;
+}
+
+.submit-btn:hover {
+    background-color: #2980b9; /* Un tono más oscuro al pasar el ratón */
+}
+
+.submit-btn:active {
+    background-color: #1d6fa5; /* Tono más oscuro al hacer clic */
+}
+
+/* Estilo para el botón de crear usuario */
+.create-btn {
+    background-color: #2ecc71; /* Verde, símbolo de crecimiento y estabilidad */
+    color: white;
+    font-weight: bold;
+}
+
+.create-btn:hover {
+    background-color: #27ae60; /* Un verde más oscuro */
+}
+
+.create-btn:active {
+    background-color: #1e8449; /* Tono más oscuro al hacer clic */
+}
+
+/* Estilo para mostrar alertas de error */
+.error-message {
+    color: #e74c3c; /* Rojo para el mensaje de error */
+    font-size: 0.875rem;
+    margin-top: 8px;
+}
+
+/* Agregar un pequeño margen a los botones */
+button:not(:last-child) {
+    margin-bottom: 12px;
+}
+
+/* Para mejorar la apariencia de la sombra de los inputs y botones */
+input:focus, button:hover, button:active {
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5); /* Sombra sutil en los elementos interactivos */
+}

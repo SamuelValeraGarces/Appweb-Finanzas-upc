@@ -1,0 +1,88 @@
+<!-- tasas.component.html -->
+<div class="tasas-container">
+  <h1>Tasas</h1>
+  <button class="retroceder" (click)="retroceder()">Volver</button>
+  
+  <!-- Formulario para registrar una nueva tasa -->
+  <div *ngIf="!tasaEditar">
+    <h2>Registrar nueva tasa</h2>
+    <form (ngSubmit)="registrarTasa()" #formTasa="ngForm">
+      <input 
+        type="number" 
+        [(ngModel)]="nuevaTasa.valor" 
+        name="valor" 
+        placeholder="Valor" 
+        required 
+        #valor="ngModel">
+      
+      <select 
+        [(ngModel)]="nuevaTasa.tipo_tasa" 
+        name="tipo_tasa" 
+        required 
+        #tipoTasa="ngModel">
+        <option value="" disabled selected>Selecciona el tipo de tasa</option>
+        <option value="TNA">Nominal</option>
+        <option value="TEA">Efectiva</option>
+      </select>
+      
+      <!-- Mensaje de error si los campos están vacíos -->
+      <div *ngIf="(valor.invalid || tipoTasa.invalid) && formTasa.submitted" class="error-message">
+        Todos los campos son obligatorios.
+      </div>
+      
+      <button 
+        type="submit" 
+        [disabled]="valor.invalid || tipoTasa.invalid">
+        Registrar
+      </button>
+    </form>
+  </div>
+
+  <!-- Formulario para editar una tasa -->
+  <div *ngIf="tasaEditar">
+    <h2>Editar tasa</h2>
+    <form (ngSubmit)="actualizarTasa()" #formEditar="ngForm">
+      <input 
+        type="number" 
+        [(ngModel)]="tasaEditar.valor" 
+        name="valor" 
+        placeholder="Valor" 
+        required 
+        #valorEditar="ngModel">
+      
+      <select 
+        [(ngModel)]="tasaEditar.tipo_tasa" 
+        name="tipo_tasa" 
+        required 
+        #tipoTasaEditar="ngModel">
+        <option value="TNA">Nominal</option>
+        <option value="TEA">Efectiva</option>
+      </select>
+
+      <button type="submit">Actualizar</button>
+      <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+    </form>
+  </div>
+
+  <!-- Tabla de tasas -->
+  <h2>Listado de tasas</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Valor</th>
+        <th>Tipo de Tasa</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tasa of tasas">
+        <td>{{ tasa.valor }}</td>
+        <td>{{ tasa.tipo_tasa }}</td>
+        <td>
+          <button (click)="editarTasa(tasa)">Editar</button>
+          <button (click)="eliminarTasa(tasa.id_tasa)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,111 @@
+<div class="cartera-container">
+  <h2>Facturas de la Cartera {{ totalCartera?.carteraId }}  </h2>
+  
+  <p>Simbolo de la moneda: {{ simboloMoneda }}</p>
+  <!-- Botón para retroceder -->
+  <button (click)="retroceder()">Volver</button>
+  <!-- Botón para agregar factura -->
+  <button (click)="mostrarFormularioRegistro()">Agregar Factura</button>
+
+  <!-- Formulario de registro de factura -->
+  <div *ngIf="mostrarFormulario" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="mostrarFormulario = false">&times;</span>
+      <form (ngSubmit)="registrarFactura()">
+        <label for="nombre_factura">Nombre de la Factura:</label>
+        <input id="nombre_factura" [(ngModel)]="nuevaFactura.nombre_factura" name="nombre_factura" required>
+
+        <label for="valor_nominal">Valor Nominal:</label>
+        <input id="valor_nominal" [(ngModel)]="nuevaFactura.valor_nominal" name="valor_nominal" required type="number">
+
+        <label for="fecha_emision">Fecha de Emisión:</label>
+        <input id="fecha_emision" [(ngModel)]="nuevaFactura.fecha_emision" name="fecha_emision" required type="date">
+
+        <label for="fecha_vencimiento">Fecha de Vencimiento:</label>
+        <input id="fecha_vencimiento" [(ngModel)]="nuevaFactura.fecha_vencimiento" name="fecha_vencimiento" required type="date">
+
+        <label for="estado_factura">Estado de la Factura:</label>
+        <select [(ngModel)]="estadoFacturaTexto" id="estadoFactura" name="estado_factura">
+          <option value="No pagado">No pagado</option>
+          <option value="Pagado">Pagado</option>
+        </select>
+
+        <button type="submit">Registrar Factura</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tabla de facturas -->
+  <div *ngIf="facturas.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>ID Factura</th>
+          <th>Nombre Factura</th>
+          <th>Valor Nominal</th>
+          <th>Fecha Emisión</th>
+          <th>Fecha Vencimiento</th>
+          <th>Estado Factura</th>
+          <th>Tasa Efectiva (%)</th>
+          <th>Tasa Descontada (%)</th>
+          <th>Descuento</th>
+          <th>Valor Neto</th>
+          <th>Valor Recibido</th>
+          <th>Valor Entregado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let factura of facturas">
+          <td>{{ factura.id_factura }}</td>
+          <td>{{ factura.nombre_factura }}</td>
+          <!-- Usar el símbolo de la moneda -->
+          <td>{{ simboloMoneda }} {{ factura.valor_nominal | number:'1.2-2' }}</td>
+          <td>{{ factura.fecha_emision | date:'dd-MM-yyyy' }}</td>
+          <td>{{ factura.fecha_vencimiento | date:'dd-MM-yyyy' }}</td>
+          <td>{{ factura.estado_factura ? 'No pagado' : 'Pagado' }}</td>
+          <td>{{ (factura.tasa_efectiva * 100) | number:'1.2-2' }}%</td>
+          <td>{{ (factura.tasa_descontada * 100) | number:'1.2-2' }}%</td>
+          <!-- Usar el símbolo de la moneda para el descuento y otros valores -->
+          <td>{{ simboloMoneda }} {{ factura.descuento | number:'1.2-2' }}</td>
+          <td>{{ simboloMoneda }} {{ factura.valor_neto | number:'1.2-2' }}</td>
+          <td>{{ simboloMoneda }} {{ factura.valor_recibido | number:'1.2-2' }}</td>
+          <td>{{ simboloMoneda }} {{ factura.valor_entregado | number:'1.2-2' }}</td>
+          <td>
+            <button (click)="modificarFactura(factura)">Modificar</button>
+            <button (click)="eliminarFactura(factura.id_factura)">Eliminar</button>
+            <button (click)="irAGastos(factura.id_factura)">Ver Gastos</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Total de la cartera -->
+  <div *ngIf="totalCartera">
+    <h3>Total de la Cartera</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Id Cartera</th>
+          <th>Total Descuento</th>
+          <th>Total Valor Neto</th>
+          <th>Total Valor Recibido</th>
+          <th>Total Valor Entregado</th>
+          <th>Total Días</th>
+          <th>TCEA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ totalCartera.carteraId }}</td>
+          <td>{{ simboloMoneda }}{{ totalCartera.totalDescuento | number:'1.2-2' }}</td>
+          <td>{{ simboloMoneda }}{{ totalCartera.totalValorNeto | number:'1.2-2' }}</td>
+          <td>{{ simboloMoneda }}{{ totalCartera.totalValorRecibido | number:'1.2-2' }}</td>
+          <td>{{ simboloMoneda }}{{ totalCartera.totalValorEntregado | number:'1.2-2' }}</td>
+          <td>{{ totalCartera.totalDias }}</td>
+          <td>{{ totalCartera.tcea | number:'1.2-2' }}%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

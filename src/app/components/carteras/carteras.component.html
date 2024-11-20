@@ -1,0 +1,97 @@
+<div class="cartera-container">
+  <h2>Lista de Carteras</h2>
+
+  <!-- Botón para mostrar el formulario de registro -->
+  <button (click)="mostrarFormularioRegistro()">Registrar Nueva Cartera</button>
+  <!-- Botón para retroceder -->
+  <button (click)="retroceder()">Volver</button>
+
+  <!-- Modal para el formulario de registro -->
+  <div class="modal" *ngIf="mostrarFormulario">
+    <div class="modal-content">
+      <span class="close" (click)="cerrarFormulario()">×</span>
+      <h3>Registrar Cartera</h3>
+      <form (ngSubmit)="registrarCartera()">
+        <label for="nombre_cartera">Nombre de la Cartera:</label>
+        <input type="text" id="nombre_cartera" [(ngModel)]="nuevaCartera.nombre_cartera" name="nombre_cartera" required>
+        
+        <label for="fecha_descuento">Fecha de Descuento:</label>
+        <input type="date" id="fecha_descuento" [(ngModel)]="nuevaCartera.fecha_descuento" name="fecha_descuento" required>
+        
+        <label for="id_usuario">Usuario:</label>
+        <select id="id_usuario" [(ngModel)]="nuevaCartera.id_usuario" name="id_usuario" required>
+          <option *ngFor="let usuario of usuarios" [value]="usuario.id_usuario">{{ usuario.nombre_usuario }}</option>
+        </select>
+
+        <label for="id_tasa">Tasa:</label>
+        <select id="id_tasa" [(ngModel)]="nuevaCartera.id_tasa" name="id_tasa" required>
+          <option *ngFor="let tasa of tasas" [value]="tasa.id_tasa">{{ tasa.tipo_tasa }} - {{ tasa.valor }}</option>
+        </select>
+
+        <label for="id_moneda">Moneda:</label>
+        <select id="id_moneda" [(ngModel)]="nuevaCartera.id_moneda" name="id_moneda" required>
+          <option *ngFor="let moneda of monedas" [value]="moneda.id_moneda">{{ moneda.nombre_moneda }} - {{ moneda.simbolo }}</option>
+        </select>
+
+        <button type="submit">Registrar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal para el formulario de edición -->
+  <div class="modal" *ngIf="carteraEditar">
+    <div class="modal-content">
+      <span class="close" (click)="cancelarEdicion()">×</span>
+      <h3>Editar Cartera</h3>
+      <form (ngSubmit)="actualizarCartera()">
+        <label for="nombre_cartera_editar">Nombre de la Cartera:</label>
+        <input type="text" id="nombre_cartera_editar" [(ngModel)]="carteraEditar.nombre_cartera" name="nombre_cartera" required>
+        
+        <label for="fecha_descuento_editar">Fecha de Descuento:</label>
+        <input type="date" id="fecha_descuento_editar" [(ngModel)]="carteraEditar.fecha_descuento" name="fecha_descuento" required>
+        
+        <label for="id_usuario_editar">Usuario:</label>
+        <select id="id_usuario_editar" [(ngModel)]="carteraEditar.id_usuario" name="id_usuario" required>
+          <option *ngFor="let usuario of usuarios" [value]="usuario.id_usuario">{{ usuario.nombre_usuario }}</option>
+        </select>
+
+        <label for="id_tasa_editar">Tasa:</label>
+        <select id="id_tasa_editar" [(ngModel)]="carteraEditar.id_tasa" name="id_tasa" required>
+          <option *ngFor="let tasa of tasas" [value]="tasa.id_tasa">{{ tasa.tipo_tasa }} - {{ tasa.valor }}</option>
+        </select>
+
+        <label for="id_moneda_editar">Moneda:</label>
+        <select id="id_moneda_editar" [(ngModel)]="carteraEditar.id_moneda" name="id_moneda" required>
+          <option *ngFor="let moneda of monedas" [value]="moneda.id_moneda">{{ moneda.nombre_moneda }} - {{ moneda.simbolo }}</option>
+        </select>
+
+        <button type="submit">Actualizar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mostrar las carteras en una tabla -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Fecha de Descuento</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cartera of carteras">
+        <td>{{ cartera.id_cartera }}</td>
+        <td>{{ cartera.nombre_cartera }}</td>
+        <td>{{ cartera.fecha_descuento }}</td>
+        <td>
+          <!-- Botones de acción: Ver Facturas, Editar y Eliminar -->
+          <button (click)="verFacturas(cartera.id_cartera)">Ver Facturas</button>
+          <button (click)="editarCartera(cartera)">Editar</button>
+          <button (click)="eliminarCartera(cartera.id_cartera)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

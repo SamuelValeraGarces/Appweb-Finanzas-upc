@@ -1,0 +1,125 @@
+/* gastos.component.css */
+.gastos-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f4f8; /* color de fondo más suave */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    text-align: center;
+    color: #2c3e50; /* gris oscuro */
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #34495e; /* gris medio */
+}
+
+input[type="number"], select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #bdc3c7; /* gris claro */
+    border-radius: 4px;
+    outline: none;
+}
+
+input[type="number"]:focus, select:focus {
+    border-color: #3498db; /* azul brillante */
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #3498db; /* azul primario */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9; /* azul oscuro */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #ffffff; /* fondo blanco */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+li strong {
+    font-weight: bold;
+}
+
+button {
+    padding: 8px 15px;
+    margin-top: 10px;
+}
+
+button + button {
+    margin-left: 10px;
+    background-color: #e74c3c; /* rojo para el botón de eliminación */
+}
+
+button + button:hover {
+    background-color: #c0392b; /* rojo oscuro */
+}
+
+hr {
+    margin-top: 15px;
+    border: 0;
+    border-top: 1px solid #ecf0f1; /* gris muy claro */
+}
+
+.gastos-container .form-group {
+    margin-bottom: 15px;
+}
+
+.gastos-container .form-group label {
+    display: block;
+}
+
+.gastos-container .form-group input,
+.gastos-container .form-group select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.gastos-container .form-actions {
+    text-align: center;
+}
+
+.gastos-container .form-actions button {
+    margin-top: 20px;
+}

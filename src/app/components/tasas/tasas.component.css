@@ -1,0 +1,172 @@
+/* tasas.component.css */
+
+.tasas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  background: linear-gradient(to right, #004d66, #0099cc); /* Degradado azul oscuro y gris */
+  color: white;
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #ecf0f1; /* Blanco suave */
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #bdc3c7; /* Gris claro para subtítulos */
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+input, select {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input:focus, select:focus {
+  border-color: #2980b9; /* Azul confiable */
+  outline: none;
+  background-color: #f1f1f1;
+}
+
+button {
+  background-color: #2980b9; /* Azul para acciones primarias */
+  color: white;
+  border: none;
+  padding: 14px 25px;
+  margin: 10px 5px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #1f6f94; /* Azul más oscuro en hover */
+  transform: translateY(-5px);
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  background-color: #1a4f71; /* Azul más oscuro en click */
+  transform: translateY(0);
+}
+
+button[type="button"] {
+  background-color: #e74c3c; /* Rojo para el botón de cancelar */
+}
+
+button[type="button"]:hover {
+  background-color: #c0392b; /* Rojo más oscuro en hover */
+}
+
+table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background-color: #2980b9; /* Azul en el encabezado */
+  color: white;
+  font-size: 1.2rem;
+}
+
+td {
+  color: black;
+}
+
+tr:nth-child(even) {
+  background-color: #ecf0f1; /* Fondo alterno en filas */
+}
+
+tr:nth-child(odd) {
+  background-color: #dfe6e9; /* Fondo alterno en filas */
+}
+
+td button {
+  background-color: #28a745; /* Verde para editar */
+  padding: 8px 16px; /* Reducir el tamaño del botón */
+
+  width: 30%;
+}
+.retroceder{
+    background-color:  #2980b9; /* Verde para editar */
+  padding: 8px 16px; /* Reducir el tamaño del botón */
+
+  width: 10%;
+}
+td button:hover {
+  background-color: #218838; /* Verde más oscuro en hover */
+}
+
+td button:nth-child(2) {
+  background-color: #e74c3c; /* Rojo para eliminar */
+}
+
+td button:nth-child(2):hover {
+  background-color: #c0392b; /* Rojo más oscuro en hover */
+}
+
+@media (max-width: 768px) {
+  h1 {
+      font-size: 2rem;
+  }
+
+  h2 {
+      font-size: 1.5rem;
+  }
+
+  form {
+      width: 90%;
+      max-width: 350px;
+  }
+
+  table {
+      width: 100%;
+      font-size: 0.9rem;
+  }
+}
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
